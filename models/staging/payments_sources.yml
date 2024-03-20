@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: customers
+    columns: 
+      - name: customer_id
+        tests:
+          - not_null
+  - name: payments
+    columns: 
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
+      - name: payment_method
+        tests:
+          - accepted_values:
+              values: 
+                - credit_card
+                - ach_transfer
+                - paypal
+  - name: orders
+    columns: 
+      - name: order_id
+        tests:
+          - unique
